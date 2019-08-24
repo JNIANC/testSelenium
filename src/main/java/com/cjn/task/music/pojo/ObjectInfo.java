@@ -39,15 +39,16 @@ public class ObjectInfo {
     private String isInFirstdate;
     private String vipType;
     private List<ImgItems> imgItems;*/
-    private String singer;
+    private String pay_singer;
     private String pay_content_id;
-    private String title;
-    private String price;
-	public String getSinger() {
-		return singer;
+    private String pay_title;
+    private String pay_price;
+	
+	public String getPay_singer() {
+		return pay_singer;
 	}
-	public void setSinger(String singer) {
-		this.singer = singer;
+	public void setPay_singer(String pay_singer) {
+		this.pay_singer = pay_singer;
 	}
 	
 	public String getPay_content_id() {
@@ -56,17 +57,18 @@ public class ObjectInfo {
 	public void setPay_content_id(String pay_content_id) {
 		this.pay_content_id = pay_content_id;
 	}
-	public String getTitle() {
-		return title;
+	
+	public String getPay_title() {
+		return pay_title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPay_title(String pay_title) {
+		this.pay_title = pay_title;
 	}
-	public String getPrice() {
-		return price;
+	public String getPay_price() {
+		return pay_price;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPay_price(String pay_price) {
+		this.pay_price = pay_price;
 	}
     
     /*public void setFirstStartDate(Date firstStartDate) {

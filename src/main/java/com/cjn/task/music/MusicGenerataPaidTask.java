@@ -30,19 +30,19 @@ import net.sf.json.JSONObject;
 
 
 
-public class GenerataPaidTask {
+public class MusicGenerataPaidTask {
 
-	private static String downloadPath = "D:\\myData\\download.json";
-	private static String ablumListPath = "D:\\myData\\ablumList.json";
+	private static String downloadPath = "D:\\myData\\paidTask\\muiscTask\\download.json";
+	private static String ablumListPath = "D:\\myData\\paidTask\\muiscTask\\ablumList.json";
 	private static String ablumInterfaceUrl = "https://c.musicapp.migu.cn/MIGUM2.0/v1.0/content/querycontentbyId.do?ua=Android_migu&version=5.0&needAll=0&columnId=15037157";
-	private static String resultPath = "D:\\myData\\result.txt";
+	private static String resultPath = "D:\\myData\\paidTask\\muiscTask\\result.txt";
 	//private static Map<String, MusicAlbumBean> albumMap = new HashMap<String, MusicAlbumBean>();
 	private static List<MusicAlbumBean> alList = new ArrayList<MusicAlbumBean>();
 	
 	public static void main(String[] args){
 		CommonUtil.download(ablumInterfaceUrl,downloadPath);
 		getAlumList(CommonUtil.result,ablumListPath);
-		setPay(1,5.5f);
+		setPay(80,5.2f);
 		//getJson("https://c.musicapp.migu.cn/MIGUM2.0/v1.0/content/querycontentbyId.do?ua=Android_migu&version=5.0&needSimple=1&columnId=22685686");
 	}
 	
@@ -95,10 +95,10 @@ public class GenerataPaidTask {
 					objectInfo = new ObjectInfo();
 					object =(JsonObject) new JsonParser().parse(subObject.toString());
 					object = (JsonObject) object.get("objectInfo");
-					objectInfo.setSinger(object.get("singer").getAsString());
+					objectInfo.setPay_singer(object.get("singer").getAsString());
 					objectInfo.setPay_content_id(object.get("itemId").getAsString());
-					objectInfo.setPrice(Float.parseFloat(object.get("price").getAsString())/100+"");
-					objectInfo.setTitle(object.get("title").getAsString());
+					objectInfo.setPay_price(Float.parseFloat(object.get("price").getAsString())/100+"");
+					objectInfo.setPay_title(object.get("title").getAsString().replace("\'", ""));
 					uAlbumBean.setObjectInfo(objectInfo);
 					//albumMap.put(objectInfo.getItemId(), uAlbumBean);
 					alList.add(uAlbumBean);
@@ -159,13 +159,15 @@ public class GenerataPaidTask {
 					bufferedWriter.write("[");
 				for (int j = 0; j < alList.size(); j++) {
 					albumBean = alList.get(new Random().nextInt(alList.size()));
-					alumPrice =Float.parseFloat(albumBean.getObjectInfo().getPrice());
-					if(alumPrice<averagePrice+averagePrice * 0.341) {
+					alumPrice =Float.parseFloat(albumBean.getObjectInfo().getPay_price());
+					float numL = new Random().nextFloat();
+					float re = (float) (0.314>numL?0.314-numL:numL-0.314);
+					if(alumPrice<averagePrice+averagePrice * re) {
 						sum +=alumPrice;
 						try {
 							bufferedWriter.write(JSONObject.fromObject(albumBean.getObjectInfo())+(i<num?",":""));
 							dataCount++;
-							System.out.println(JSONObject.fromObject(albumBean.getObjectInfo()));
+							System.out.println(re+" "+JSONObject.fromObject(albumBean.getObjectInfo()));
 							break;
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
