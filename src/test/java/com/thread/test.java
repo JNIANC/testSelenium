@@ -19,7 +19,23 @@ public class test {
 		jsonObject.addProperty("buy_times",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		System.out.println(jsonObject.toString());*/
 		//int a = -35;
-		System.out.println("{\"status:\":\"购买失败\",\"result:\":\"++\"}");
-		System.out.println("立即支付5元".substring(4, 6).replace("元",""));
+		/*System.out.println("{\"status:\":\"购买失败\",\"result:\":\"++\"}");
+		System.out.println("立即支付5元".substring(4, 6).replace("元",""));*/
+		/*int a = new Random().nextInt(5);
+		int b = 4;
+		for (int i = 0; i < 10; i++) {
+			if(i>b) {
+				if(i>a) {
+					if(i>5) {
+						System.out.println("a:"+a+",i:"+i);
+						break;
+					}
+				}
+			}
+			System.out.println("1");
+		}*/
+		if("用具粤语".contains("用具")) {
+			System.out.println("相同");
+		}
 	}
 }

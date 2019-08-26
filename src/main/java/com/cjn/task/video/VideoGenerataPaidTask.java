@@ -1,4 +1,4 @@
-package com.cjn.task.video.pojo;
+package com.cjn.task.video;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.cjn.task.video.pojo.ObjectInfo;
+import com.cjn.task.video.pojo.VideoBean;
 import com.cjn.task.video.util.CommonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
